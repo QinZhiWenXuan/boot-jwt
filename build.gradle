@@ -1,0 +1,32 @@
+group 'xuan.wen.zhi.qin'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+targetCompatibility = 1.8
+
+repositories {
+    maven {
+        url 'http://127.0.0.1:10086/nexus/content/repositories/central/'
+    }
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE',
+            'com.auth0:java-jwt:3.2.0'
+    testCompile 'junit:junit:4.12'
+}
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
+}
+
+task createJavadoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
